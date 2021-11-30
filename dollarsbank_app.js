@@ -1,2 +1,3 @@
-var msg = 'Hello World';
-console.log(msg);
+const atm = require('./src/dollars_bank_atm');
+
+atm();
