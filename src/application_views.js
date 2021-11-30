@@ -92,4 +92,79 @@ user.transaction.printHistory = function(userAccount){
 }
 
 //Update Account Pin
+user.transaction.upDatePin = function(userAccount){
+    let oldPin = prompt(console.log('\x1b[32m', 'Enter Old Pin: '));
 
+    if(oldPin == userAccount.apin){
+        let newPin = prompt(console.log('\x1b[32m', 'Enter New Pin: '));
+        let reg = /^[0-9]{4,4}$/;
+        if(reg.test(newPin)){
+            userAccount.apin = newPin;
+            console.log('\x1b[34m', 'Your pin has benn changed: ')
+        }else{
+            console.log('\x1b[31m', 'Error Try Again ')
+        }
+
+    }else{
+        console.log('\x1b[31m', 'Error Try Again')
+    }
+}
+
+
+// Withrawal
+user.transaction.withdraw = function(userAccount){
+    let withdra = prompt(console.log('\x1b[32m', 'Enter Withdrawal Amount: 00.00 : \x1b[0m'));
+    withdra = Number(withdra);
+
+    let regex = /\d+(\.\[1,2])?/;
+    if(regex.test(withdra)){
+        let balance = Number(userAccount.abalance);
+        balance -= withdra;
+        if(balance < 0){
+            console.log('\x1b[31m', 'Insufficient Funds')
+        }else{
+            balance = balance.toFixed(2);
+            userAccount.abalance = balance;
+            withdra = withdra.toFixed(2);
+
+            let newDate = new Date();
+            userAccount.ahistory.push('-$' + withdra +' on ' + newDate);
+            console.log('\x1b[34m', 'Deposit Successful ')
+        }
+    }else{
+        console.log('\x1b[31m', 'Error Try Again')
+    }
+}
+
+
+// Depoist 
+
+user.transaction.deposit = function(userAccount){
+    let deposit = prompt(console.log('\x1b[32m', 'Enter Deposit Amount: 00.00 : \x1b[0m'));
+    deposit = Number(deposit);
+    let regex = /\d+(\.\[1,2])?/;
+
+    if(regex.test(deposit)){
+        let balance = Number(userAccount.abalance);
+        balance += deposit;
+    
+        balance = balance.toFixed(2);
+        userAccount.abalance = balance;
+       deposit = deposit.toFixed(2);
+
+        let newDate = new Date();
+        userAccount.ahistory.push('-$' + deposit +' on ' + newDate);
+        console.log('\x1b[34m', 'Deposit Successful ')
+        
+    }else{
+    console.log('\x1b[31m', 'Error Try Again')
+    }
+}
+
+// Loop
+
+user.transaction.repeat = function(){
+    console.log('\x1b[32m', 'Perform another transaction?(y,n)  \x1b[0m')
+}
+
+module.exports = user;
