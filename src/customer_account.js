@@ -7,15 +7,15 @@ class Account{
             this.balance = balance;
 
             this.history = new Array();
-            let data = new Data();
+            let date = new Date();
 
-            this.history.push('+ $' + balance + ' on ' + data);
+            this.history.push('+ $' + balance + ' on ' + date);
         }
 
         get apin() {
             return this.pin;
         }
-        set apin(){
+        set apin(pin){
             this.pin = pin;
 
         }
@@ -23,14 +23,14 @@ class Account{
         get abalance(){
             return this.balance;
         }
-        set abalance(){
+        set abalance(balance){
              this.balance = balance;
         }
 
         get ahistory(){
-             this.history;
+            return this.history;
         }
-        set ahistory(){
+        set ahistory(history){
             this.history = history;
         }
 }

@@ -12,7 +12,13 @@ user.welcome = function(){
     console.log('\nx1b[32m','DOLLARSBANK ATM Welcomes You!!');
     console.log('Enter a valid Choice (1 > Transaction 2 > Open new Account','\x1b[0m');
 }
+// Login To Account
+user.login = function(){
+    
+    console.log('\x1b[32m', 'Enter Pin: ')
 
+
+}
 
 //New Account
 user.newUser = function(){
@@ -53,13 +59,7 @@ user.newUser = function(){
 }
 
 
-// Login To Account
-user.login = function(){
-    
-    console.log('\x1b[32m', 'Enter Pin: v')
 
-
-}
 user.transaction = {}
 
 // Transcation Menu 
@@ -86,8 +86,8 @@ user.transaction.checkBalance = function(userAccount){
 user.transaction.printHistory = function(userAccount){
     history = userAccount.ahistory;
     console.log('\x1b[32m', ' ===== Transcation History ======');
-    for( let i = 0; i < history.length;i++){
-        console.log(history[i]);
+    for(let j = 0; j < history.length; j++){
+        console.log(history[j]);
     }
 }
 
@@ -129,7 +129,7 @@ user.transaction.withdraw = function(userAccount){
 
             let newDate = new Date();
             userAccount.ahistory.push('-$' + withdra +' on ' + newDate);
-            console.log('\x1b[34m', 'Deposit Successful ')
+            console.log('\x1b[34m', 'Withdrawal Successful Your new Balance:$ '+ userAccount.abalance);
         }
     }else{
         console.log('\x1b[31m', 'Error Try Again')
@@ -154,7 +154,7 @@ user.transaction.deposit = function(userAccount){
 
         let newDate = new Date();
         userAccount.ahistory.push('-$' + deposit +' on ' + newDate);
-        console.log('\x1b[34m', 'Deposit Successful ')
+        console.log('\x1b[34m', 'Deposit Successful Your new Balance:$ '+ userAccount.abalance);
         
     }else{
     console.log('\x1b[31m', 'Error Try Again')
